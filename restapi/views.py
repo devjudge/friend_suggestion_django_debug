@@ -54,10 +54,7 @@ def add_friend(request, userA, userB):
         from_send_request = eval(from_friend.request_pending)
         from_received_request = eval(from_friend.friend_request)
 
-        if to_friend.username in from_current_friends and from_friend.username in to_current_friends:
-            return JsonResponse({"status": "failure",
-                                 "reason": "You both are already friends"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        elif to_friend.username in from_received_request:
+        if to_friend.username in from_received_request:
 
             to_current_friends.append(from_friend.username)
             from_current_friends.append(to_friend.username)
